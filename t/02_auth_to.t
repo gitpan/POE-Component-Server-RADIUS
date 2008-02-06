@@ -60,7 +60,7 @@ sub _authevent {
   ok( $data->{'User-Password'} eq 'moocow', 'User-Password' );
   ok( $data->{'Service-Type'} eq '0', 'Service-Type' );
   ok( $data->{'NAS-Port'} eq '1234', 'NAS-Port' );
-  ok( $data->{'NAS-IP-Address'} eq '192.168.1.87', 'NAS-IP-Address' );
+  ok( defined $data->{'NAS-IP-Address'}, 'NAS-IP-Address' );
   ok( $data->{'Called-Station-Id'} eq '0000', 'Called-Station-Id' );
   ok( $data->{'Calling-Station-Id'} eq '01234567890', 'Calling-Station-Id' );
   return;

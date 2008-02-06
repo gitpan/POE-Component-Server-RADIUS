@@ -24,4 +24,4 @@ requires:
   POE: 0.9999
   POE::Component::Client::RADIUS: 0.01
   Socket: 0
-version: 0.01
+version: 0.02
