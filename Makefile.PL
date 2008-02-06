@@ -1,0 +1,16 @@
+use inc::Module::Install;
+name 'POE-Component-Server-RADIUS';
+author 'Chris Williams <chris@bingosnet.co.uk>';
+license 'perl';
+version_from 'lib/POE/Component/Server/RADIUS.pm';
+abstract_from 'lib/POE/Component/Server/RADIUS.pm';
+build_requires 'Test::More' => 0.47;
+requires 'Carp' => 0;
+requires 'Socket' => 0;
+requires 'Math::Random' => 0.69;
+requires 'Net::IP' => 1.25;
+requires 'Net::Radius::Packet' => 1.55;
+requires 'Net::Radius::Dictionary' => 1.55;
+requires 'POE'    => 0.9999;
+requires 'POE::Component::Client::RADIUS' => 0.01;
+WriteAll();
