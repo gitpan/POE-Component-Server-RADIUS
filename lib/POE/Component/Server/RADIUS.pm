@@ -1,6 +1,7 @@
 package POE::Component::Server::RADIUS;
 
 use strict;
+use warnings;
 use Socket;
 use POE;
 use Net::Radius::Dictionary;
@@ -8,7 +9,7 @@ use Net::Radius::Packet;
 use Net::IP qw(ip_is_ipv4);
 use vars qw($VERSION);
 
-$VERSION = '0.02';
+$VERSION = '0.04';
 
 use constant DATAGRAM_MAXLEN => 4096;
 use constant RADIUS_PORT => 1812;
@@ -369,7 +370,12 @@ POE::Component::Server::RADIUS - a POE based RADIUS server component
    
    sub _start {
      # We need to register with the poco to receive events
-     $poe_kernel->post( $radiusd->session_id(), 'register', authevent => '_authenticate', acctevent => '_accounting' );
+     $poe_kernel->post( 
+	$radiusd->session_id(), 
+	'register', 
+	authevent => '_authenticate', 
+	acctevent => '_accounting' 
+     );
      return;
    }
    
@@ -400,7 +406,7 @@ POE::Component::Server::RADIUS - a POE based RADIUS server component
    
 =head1 DESCRIPTION
 
-POE::Component::Server::RADIUS is a L<POE> that provides Remote Authentication Dial In User Service (RADIUS) server
+POE::Component::Server::RADIUS is a L<POE> component that provides Remote Authentication Dial In User Service (RADIUS) server
 services to other POE sessions and components.
 
 RADIUS is commonly used by ISPs and corporations managing access to Internet or internal networks and is 
@@ -428,14 +434,15 @@ Creates a new POE::Component::Server::RADIUS session that starts various UDP soc
   'options', a hashref of POE session options;
   'authport', specify a port to listen on for authentication requests;
   'acctport', specify a port to listen on for accounting requests;
-  'legacy', set to a true value to make the component honour legacy listeners ports;
-  'timeout', set a time out in seconds that the poco waits for sessions to respond to auth requests, default 10;
+  'legacy', set to a true value to make the component honour legacy listener ports;
+  'timeout', set a time out in seconds that the poco waits for sessions to respond to auth requests, 
+	     default 10;
 
 By default the component listens on ports C<1812> and C<1813> for authentication and accounting requests, respectively. These are
 the C<official> ports from the applicable RFCs. Setting C<legacy> option makes the component also listen on ports C<1645> and
 C<1646>. 
 
-Returns an POE::Component::Server::RADIUS object, which provides the following methods:
+Returns a POE::Component::Server::RADIUS object, which provides the following methods:
 
 =back
 
@@ -485,24 +492,24 @@ These are events that the component will accept:
 This will register the sending session to receive events from the component. It requires either one of the following parameters. You
 may specify both if you require:
 
-  'authevent', the name of an event in your session that will be triggered for authentication requests;
-  'acctevent', the name of an event in your session that will be triggered for accounting requests;
+  'authevent', event in your session that will be triggered for authentication requests;
+  'acctevent', event in your session that will be triggered for accounting requests;
 
 The component automatically responds to accounting requests.
 
-Authentication requests require your session to send either an accept or reject response back to the component.
+Authentication requests require your session to send either an C<accept> or C<reject> response back to the component.
 
 =item accept
 
 Tells the component to send an C<Access-Accept> response back to the requesting client. Requires one mandatory argument which is 
 a request_id previously given you by the component (See OUTPUT EVENTS for details). The remaining parameters are assumed to be 
-RADIUS attributes that you want adding the the C<Access-Accept> response. Check with the RFC for what attributes are valid.
+RADIUS attributes that you want adding to the C<Access-Accept> response. Check with the RFC for what attributes are valid.
 
 =item reject
 
 Tells the component to send an C<Access-Reject> response back to the requesting client. Requires one mandatory argument which is 
 a request_id previously given you by the component (See OUTPUT EVENTS for details). The remaining parameters are assumed to be 
-RADIUS attributes that you want adding the the C<Access-Reject> response. Check with the RFC for what attributes are valid.
+RADIUS attributes that you want adding to the C<Access-Reject> response. Check with the RFC for what attributes are valid.
 
 =item unregister 
 
@@ -526,7 +533,7 @@ or both.
 ARG0 will be the IP address of the RADIUS client. The component will have already discarded accounting requests from clients
 which don't have a matching IP address and shared-secret. ARG1 will be hashref containing RADIUS attributes and value pairs. 
 
-As the component automatically responds to valid clients with a C<Accounting-Response> packet, your session need take any 
+As the component automatically responds to valid clients with an C<Accounting-Response> packet, your session need not take any 
 further action in response to these events.
 
 =item C<authevent> type events
@@ -535,7 +542,7 @@ ARG0 will be the IP address of the RADIUS client. The component will have alread
 the configured shared-secret for the RADIUS client. ARG1 will be a hashref containing RADIUS attributes and value pairs. ARG3 will
 be a unique request_id required when sending C<accept> or C<reject> events back to the component.
 
-You must check the validity of the request and then issue either a C<accept> or C<reject> event back to the component using the 
+You must check the validity of the request and then issue either an C<accept> or C<reject> event back to the component using the 
 request_id and specifying any RADIUS attributes that you wish conveyed to the client.
 
 The component times out authentication requests to prevent stale requests. This timeout is configurable through the C<spawn> constructor.

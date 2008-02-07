@@ -5,6 +5,7 @@ license 'perl';
 version_from 'lib/POE/Component/Server/RADIUS.pm';
 abstract_from 'lib/POE/Component/Server/RADIUS.pm';
 build_requires 'Test::More' => 0.47;
+requires 'warnings::compat' => 0 if $] < 5.006;
 requires 'Carp' => 0;
 requires 'Socket' => 0;
 requires 'Math::Random' => 0.69;

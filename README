@@ -45,7 +45,12 @@ SYNOPSIS
        
    sub _start {
          # We need to register with the poco to receive events
-         $poe_kernel->post( $radiusd->session_id(), 'register', authevent => '_authenticate', acctevent => '_accounting' );
+         $poe_kernel->post( 
+            $radiusd->session_id(), 
+            'register', 
+            authevent => '_authenticate', 
+            acctevent => '_accounting' 
+         );
          return;
        }
        
@@ -75,7 +80,7 @@ SYNOPSIS
        }
 
 DESCRIPTION
-    POE::Component::Server::RADIUS is a POE that provides Remote
+    POE::Component::Server::RADIUS is a POE component that provides Remote
     Authentication Dial In User Service (RADIUS) server services to other
     POE sessions and components.
 
@@ -105,15 +110,16 @@ CONSTRUCTOR
           'options', a hashref of POE session options;
           'authport', specify a port to listen on for authentication requests;
           'acctport', specify a port to listen on for accounting requests;
-          'legacy', set to a true value to make the component honour legacy listeners ports;
-          'timeout', set a time out in seconds that the poco waits for sessions to respond to auth requests, default 10;
+          'legacy', set to a true value to make the component honour legacy listener ports;
+          'timeout', set a time out in seconds that the poco waits for sessions to respond to auth requests, 
+                     default 10;
 
         By default the component listens on ports 1812 and 1813 for
         authentication and accounting requests, respectively. These are the
         "official" ports from the applicable RFCs. Setting "legacy" option
         makes the component also listen on ports 1645 and 1646.
 
-        Returns an POE::Component::Server::RADIUS object, which provides the
+        Returns a POE::Component::Server::RADIUS object, which provides the
         following methods:
 
 METHODS
@@ -152,20 +158,20 @@ INPUT EVENTS
         component. It requires either one of the following parameters. You
         may specify both if you require:
 
-          'authevent', the name of an event in your session that will be triggered for authentication requests;
-          'acctevent', the name of an event in your session that will be triggered for accounting requests;
+          'authevent', event in your session that will be triggered for authentication requests;
+          'acctevent', event in your session that will be triggered for accounting requests;
 
         The component automatically responds to accounting requests.
 
         Authentication requests require your session to send either an
-        accept or reject response back to the component.
+        "accept" or "reject" response back to the component.
 
     accept
         Tells the component to send an "Access-Accept" response back to the
         requesting client. Requires one mandatory argument which is a
         request_id previously given you by the component (See OUTPUT EVENTS
         for details). The remaining parameters are assumed to be RADIUS
-        attributes that you want adding the the "Access-Accept" response.
+        attributes that you want adding to the "Access-Accept" response.
         Check with the RFC for what attributes are valid.
 
     reject
@@ -173,7 +179,7 @@ INPUT EVENTS
         requesting client. Requires one mandatory argument which is a
         request_id previously given you by the component (See OUTPUT EVENTS
         for details). The remaining parameters are assumed to be RADIUS
-        attributes that you want adding the the "Access-Reject" response.
+        attributes that you want adding to the "Access-Reject" response.
         Check with the RFC for what attributes are valid.
 
     unregister
@@ -193,8 +199,8 @@ OUTPUT EVENTS
         have a matching IP address and shared-secret. ARG1 will be hashref
         containing RADIUS attributes and value pairs.
 
-        As the component automatically responds to valid clients with a
-        "Accounting-Response" packet, your session need take any further
+        As the component automatically responds to valid clients with an
+        "Accounting-Response" packet, your session need not take any further
         action in response to these events.
 
     "authevent" type events
@@ -205,7 +211,7 @@ OUTPUT EVENTS
         unique request_id required when sending "accept" or "reject" events
         back to the component.
 
-        You must check the validity of the request and then issue either a
+        You must check the validity of the request and then issue either an
         "accept" or "reject" event back to the component using the
         request_id and specifying any RADIUS attributes that you wish
         conveyed to the client.
