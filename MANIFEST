@@ -2,6 +2,7 @@ Changes
 dictionary
 examples/synopsis.pl
 inc/Module/Install.pm
+inc/Module/Install/AuthorTests.pm
 inc/Module/Install/Base.pm
 inc/Module/Install/Can.pm
 inc/Module/Install/Fetch.pm
@@ -23,6 +24,6 @@ t/05_ns_acct.t
 t/06_acct.t
 t/07_auth_on_acct.t
 t/08_acct_on_auth.t
-t/99_pod.t
-t/99_pod_coverage.t
-t/99_test_kwalitee.t
+xt/99_pod.t
+xt/99_pod_coverage.t
+xt/99_test_kwalitee.t
