@@ -9,7 +9,7 @@ use Net::Radius::Packet;
 use Net::IP qw(ip_is_ipv4);
 use vars qw($VERSION);
 
-$VERSION = '0.06';
+$VERSION = '0.08';
 
 use constant DATAGRAM_MAXLEN => 4096;
 use constant RADIUS_PORT => 1812;
@@ -555,6 +555,12 @@ C<accept> or C<reject> events back to the component.
 =head1 AUTHOR
 
 Chris C<BinGOs> Williams <chris@bingosnet.co.uk>
+
+=head1 LICENSE
+
+Copyright (C) Chris Williams
+
+This module may be used, modified, and distributed under the same terms as Perl itself. Please see the license that came with your Perl distribution for details.
 
 =head1 SEE ALSO
 
