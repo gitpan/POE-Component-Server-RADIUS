@@ -23,7 +23,7 @@ no_index:
 provides:
   POE::Component::Server::RADIUS:
     file: lib/POE/Component/Server/RADIUS.pm
-    version: 1.00
+    version: 1.02
 requires:
   Math::Random: 0.69
   Net::IP: 1.25
@@ -36,4 +36,4 @@ resources:
   homepage: http://github.com/bingos/poe-component-server-radius/tree
   license: http://dev.perl.org/licenses/
   repository: git://github.com/bingos/poe-component-server-radius.git
-version: 1.00
+version: 1.02
