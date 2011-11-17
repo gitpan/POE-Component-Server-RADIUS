@@ -3,12 +3,13 @@ abstract: 'a POE based RADIUS server component'
 author:
   - 'Chris Williams <chris@bingosnet.co.uk>'
 build_requires:
-  ExtUtils::MakeMaker: 6.42
+  ExtUtils::MakeMaker: 6.62
   Test::More: 0.47
 configure_requires:
-  ExtUtils::MakeMaker: 6.42
+  ExtUtils::MakeMaker: 6.62
 distribution_type: module
-generated_by: 'Module::Install version 1.00'
+dynamic_config: 1
+generated_by: 'Module::Install version 1.04'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -23,17 +24,20 @@ no_index:
 provides:
   POE::Component::Server::RADIUS:
     file: lib/POE/Component/Server/RADIUS.pm
-    version: 1.04
+    version: 1.06
 requires:
   Math::Random: 0.69
-  Net::IP: 1.25
+  Net::IP::Minimal: 0.02
   Net::Radius::Dictionary: 1.55
   Net::Radius::Packet: 1.55
   POE: 0.9999
   POE::Component::Client::RADIUS: 1
   perl: 5.6.0
 resources:
-  homepage: http://github.com/bingos/poe-component-server-radius/tree
+  homepage: https://github.com/bingos/poe-component-server-radius/tree
   license: http://dev.perl.org/licenses/
-  repository: git://github.com/bingos/poe-component-server-radius.git
-version: 1.04
+  repository:
+    type: git
+    url: git://github.com/bingos/poe-component-server-radius.git
+    web: https://github.com/bingos/poe-component-server-radius/tree
+version: 1.06
