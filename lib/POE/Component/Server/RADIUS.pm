@@ -1,4 +1,9 @@
 package POE::Component::Server::RADIUS;
+{
+  $POE::Component::Server::RADIUS::VERSION = '1.08';
+}
+
+#ABSTRACT: a POE based RADIUS server component
 
 use strict;
 use warnings;
@@ -7,9 +12,6 @@ use POE;
 use Net::Radius::Dictionary;
 use Net::Radius::Packet;
 use Net::IP::Minimal qw(ip_is_ipv4);
-use vars qw($VERSION);
-
-$VERSION = '1.06';
 
 use constant DATAGRAM_MAXLEN => 4096;
 use constant RADIUS_PORT => 1812;
@@ -323,11 +325,18 @@ sub unregister {
 }
 
 1;
+
 __END__
+
+=pod
 
 =head1 NAME
 
 POE::Component::Server::RADIUS - a POE based RADIUS server component
+
+=head1 VERSION
+
+version 1.08
 
 =head1 SYNOPSIS
 
@@ -562,16 +571,6 @@ C<accept> or C<reject> events back to the component.
 
 =back
 
-=head1 AUTHOR
-
-Chris C<BinGOs> Williams <chris@bingosnet.co.uk>
-
-=head1 LICENSE
-
-Copyright E<copy> Chris Williams
-
-This module may be used, modified, and distributed under the same terms as Perl itself. Please see the license that came with your Perl distribution for details.
-
 =head1 SEE ALSO
 
 L<POE>
@@ -581,5 +580,16 @@ L<http://en.wikipedia.org/wiki/RADIUS>
 L<http://www.faqs.org/rfcs/rfc2138.html>
 
 L<http://www.faqs.org/rfcs/rfc2866.html>
+
+=head1 AUTHOR
+
+Chris Williams <chris@bingosnet.co.uk>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2012 by Chris Williams.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
 =cut

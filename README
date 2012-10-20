@@ -1,6 +1,9 @@
 NAME
     POE::Component::Server::RADIUS - a POE based RADIUS server component
 
+VERSION
+    version 1.08
+
 SYNOPSIS
        use strict;
        use Net::Radius::Dictionary;
@@ -230,16 +233,6 @@ OUTPUT EVENTS
         you use "call" instead of "post" to send "accept" or "reject" events
         back to the component.
 
-AUTHOR
-    Chris "BinGOs" Williams <chris@bingosnet.co.uk>
-
-LICENSE
-    Copyright © Chris Williams
-
-    This module may be used, modified, and distributed under the same terms
-    as Perl itself. Please see the license that came with your Perl
-    distribution for details.
-
 SEE ALSO
     POE
 
@@ -248,4 +241,13 @@ SEE ALSO
     <http://www.faqs.org/rfcs/rfc2138.html>
 
     <http://www.faqs.org/rfcs/rfc2866.html>
+
+AUTHOR
+    Chris Williams <chris@bingosnet.co.uk>
+
+COPYRIGHT AND LICENSE
+    This software is copyright (c) 2012 by Chris Williams.
+
+    This is free software; you can redistribute it and/or modify it under
+    the same terms as the Perl 5 programming language system itself.
 

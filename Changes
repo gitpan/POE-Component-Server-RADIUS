@@ -1,31 +1,51 @@
-Changelog for POE::Component::Server::RADIUS
-============================================
+==============================
+2012-10-21 00:17:54 +0100 1.08
+==============================
 
-1.04  Mon Mar 14 22:57:59 GMT 2011
-  - Fix indirect object notation
-  - Remove trailing whitespace 'errors'
+  commit 41e569d63d03da4baa3b88ba1c95018062fb75a4
+  Author: Chris 'BinGOs' Williams <chris@bingosnet.co.uk>
+  Date:   Sun Oct 21 00:17:54 2012 +0100
+  
+    Switch to Dist::Zilla instead of Module::Install
 
-1.02  Wed Nov 11 00:34:05 GMT 2009
-  - Added dictionary() method
-  - Include Net::Radius::Packet in events that are sent
-  - Able suggestions made by Justin Hunter
+    No functional changes 
 
-1.00	Fri May 29 00:02:31 BST 2009
-	- Fixed warningsin tests.
+==============================
+2011-11-17 22:12:19 +0000 1.06
+==============================
 
-0.08	Sat Jun 28 08:28:31 BST 2008
-	- Added LICENSE information.
+  commit aece4fcbd88afe99a8be4ac095120b36dd6fea70
+  Author: Chris 'BinGOs' Williams <chris@bingosnet.co.uk>
+  Date:   Thu Nov 17 22:12:19 2011 +0000
+  
+    Use Net::IP::Minimal instead of Net::IP 
 
-0.06	Thu Apr  3 10:47:28 BST 2008
-	- Moved author tests to xt/
-	- Kwalitee fixes.
+==============================
+2011-03-14 22:59:03 +0000 1.04
+==============================
 
-0.04	Thu Feb  7 10:30:06 GMT 2008
-	- Documentation fixes.
+  commit 13eb57379468e6bb87a5d3af6d3b8562a83bccfe
+  Author: Chris 'BinGOs' Williams <chris@bingosnet.co.uk>
+  Date:   Mon Mar 14 22:59:03 2011 +0000
+  
+    Remove indirect object notation and fix trailing whitespace errors 
 
-0.02	Wed Feb  6 19:19:57 GMT 2008
-	- Fixed three of the tests, because NAS-IP-Address won't be the same 
-	  on testers' boxen as mine. School-boy error.
+==============================
+2009-11-11 00:34:26 +0000 1.02
+==============================
 
-0.01	Wed Feb  6 17:44:12 GMT 2008
-	- Initial CPAN Release
+  commit 3d611fdb71af675bc03a66c433c3c7e066576756
+  Author: Chris Williams <chris@bingosnet.co.uk>
+  Date:   Wed Nov 11 00:34:26 2009 +0000
+  
+    Implement suggestions made by Justin Hunter
+
+  commit 9464a4bb666dac7e6447f1d6dc8bd4096896b3e0
+  Author: Chris Williams <chris@bingosnet.co.uk>
+  Date:   Tue Nov 10 21:42:20 2009 +0000
+  
+    Fix documentation errors. 
+
+====================================
+End of changes in the last 1825 days
+====================================
